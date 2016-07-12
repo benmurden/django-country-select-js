@@ -3,7 +3,7 @@ from django import forms
 from django.utils.html import format_html
 
 
-class IntlTelInputWidget(forms.TextInput):
+class CountrySelectWidget(forms.TextInput):
 
     class Media:
         css = {
@@ -18,7 +18,7 @@ class IntlTelInputWidget(forms.TextInput):
 
         final_attrs['data-preferred-countries'] = json.dumps(preferred_countries)
 
-        super(IntlTelInputWidget, self).__init__(attrs=final_attrs)
+        super(CountrySelectWidget, self).__init__(attrs=final_attrs)
 
     def get_options(self):
         return json.dumps(self.options)
