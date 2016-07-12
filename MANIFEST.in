@@ -1,0 +1,3 @@
+recursive-include country_select_js *
+include README.rst
+include LICENSE
