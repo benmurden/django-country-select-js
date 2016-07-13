@@ -18,6 +18,7 @@
     };
 
     $el.countrySelect(options);
+    $el.countrySelect('selectCountry', $el.val());
     
     $form = $el.closest('form');
     if (forms.indexOf($form) === -1) {
