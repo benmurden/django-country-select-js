@@ -17,18 +17,17 @@
       }
     };
 
-    $el.countrySelect(options)
-    .done(function() {
-      $form = $el.closest('form');
-      if (forms.indexOf($form) === -1) {
-        $form.submit(function(e) {
-          $form.find('input' + cssClass).val(function() {
-            return $(this).countrySelect("getSelectedCountryData").iso2;
-          });
+    $el.countrySelect(options);
+    
+    $form = $el.closest('form');
+    if (forms.indexOf($form) === -1) {
+      $form.submit(function(e) {
+        $form.find('input' + cssClass).val(function() {
+          return $(this).countrySelect("getSelectedCountryData").iso2;
         });
+      });
 
-        forms.push($form);
-      }
-    });
+      forms.push($form);
+    }
   });
 })(jQuery);
