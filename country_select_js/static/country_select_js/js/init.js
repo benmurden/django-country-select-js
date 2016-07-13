@@ -1,6 +1,6 @@
 (function($) {
   var $el, options, $form, data,
-      cssClass = '.country-select-js',
+      cssClass = '.countryselectwidget',
       forms = [],
       inputs = $(cssClass);
 
