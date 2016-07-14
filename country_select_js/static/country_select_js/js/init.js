@@ -14,12 +14,13 @@
           var countryCode = (resp && resp.country) ? resp.country : "";
           callback(countryCode);
         });
-      }
+      },
+      preferredCountries: data['preferred-countries'] !== undefined ? data['preferred-countries'] : ['us', 'gb']
     };
 
     $el.countrySelect(options);
     $el.countrySelect('selectCountry', $el.val());
-    
+
     $form = $el.closest('form');
     if (forms.indexOf($form) === -1) {
       $form.submit(function(e) {
