@@ -15,7 +15,7 @@
           callback(countryCode);
         });
       },
-      preferredCountries: data['preferred-countries'] !== undefined ? data['preferred-countries'] : ['us', 'gb']
+      preferredCountries: data.preferredCountries !== undefined ? data.preferredCountries : ['us', 'gb']
     };
 
     $el.countrySelect(options);
