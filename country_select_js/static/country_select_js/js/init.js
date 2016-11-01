@@ -1,5 +1,5 @@
 (function($) {
-  var $el, options, $form, data, defaultCode,
+  var $el, $realInput, options, $form, data, defaultCode,
       cssClass = '.country-select-js',
       forms = [],
       inputs = $(cssClass);
@@ -10,7 +10,7 @@
     data = $el.data();
     defaultCode = data.defaultCode !== undefined ? data.defaultCode : 'us';
     options = {
-      initialCountry: "auto",
+      initialCountry: data.autoGeoIp ? 'auto' : data.defaultCode,
       geoIpLookup: function(callback) {
         if (data.autoGeoIp) {
           $.get('//freegeoip.net/json/', function() {}, "jsonp").done(function(resp) {
