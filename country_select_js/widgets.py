@@ -1,6 +1,7 @@
 import json
 from django import forms
 from django.forms.utils import flatatt
+from django.utils.encoding import force_text
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
@@ -42,7 +43,7 @@ class CountrySelectWidget(forms.TextInput):
             self.js_attrs['class'] = ' '.join(['country-select-js', final_attrs['class']])
         else:
             self.js_attrs['class'] = 'country-select-js'
-            
+
         output = [format_html('<input{}>', flatatt(final_attrs))]
         select = self.render_select()
         output.append(select)
