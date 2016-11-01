@@ -17,6 +17,7 @@ class CountrySelectWidget(forms.TextInput):
 
         final_attrs['data-preferred-countries'] = json.dumps(preferred_countries)
         final_attrs['data-default-code'] = default_code
+        final_attrs['data-auto-geo-ip'] = auto_geo_ip
 
         super(CountrySelectWidget, self).__init__(attrs=final_attrs)
 
