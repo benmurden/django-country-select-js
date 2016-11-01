@@ -19,7 +19,6 @@ class CountrySelectWidget(forms.TextInput):
             final_attrs.update(attrs)
 
         self.js_attrs = {
-            'class': ' '.join(['country-select-js', final_attrs.get('class')]),
             'size': '30',
             'data-preferred-countries': json.dumps(preferred_countries),
             'data-default-code': default_code,
@@ -39,6 +38,11 @@ class CountrySelectWidget(forms.TextInput):
         if value != '':
             final_attrs['value'] = force_text(self._format_value(value))
 
+        if final_attrs.get('class'):
+            self.js_attrs['class'] = ' '.join(['country-select-js', final_attrs['class']])
+        else:
+            self.js_attrs['class'] = 'country-select-js'
+            
         output = [format_html('<input{}>', flatatt(final_attrs))]
         select = self.render_select()
         output.append(select)
