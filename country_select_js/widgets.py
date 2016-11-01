@@ -40,7 +40,7 @@ class CountrySelectWidget(forms.TextInput):
         if value != '':
             final_attrs['value'] = force_text(self._format_value(value))
 
-        self.js_attrs['class'] = ' '.join(['intl-tel-input', final_attrs.get('class', '')]).strip()
+        self.js_attrs['class'] = ' '.join(['country-select-js', final_attrs.get('class', '')]).strip()
 
         output = [format_html('<input{}>', flatatt(final_attrs))]
         select = self.render_select()
