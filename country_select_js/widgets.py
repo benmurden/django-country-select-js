@@ -40,7 +40,7 @@ class CountrySelectWidget(forms.TextInput):
         output.append(select)
         return mark_safe('\n'.join(output))
 
-    def render_select(attrs):
+    def render_select(self, attrs):
         final_attrs = {'class': 'country-select-js', 'size': '30'}
         if attrs is not None:
             final_attrs.update(attrs)
