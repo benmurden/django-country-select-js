@@ -44,6 +44,6 @@ class CountrySelectWidget(forms.TextInput):
         output.append(select)
         return mark_safe('\n'.join(output))
 
-    def render_select(self, attrs):
+    def render_select(self):
         output = format_html('<input{}>', flatatt(self.js_attrs))
         return output
