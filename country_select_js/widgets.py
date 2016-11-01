@@ -19,7 +19,7 @@ class CountrySelectWidget(forms.TextInput):
             final_attrs.update(attrs)
 
         self.js_attrs = {
-            'class': 'country-select-js',
+            'class': ' '.join(['country-select-js', final_attrs.get('class')]),
             'size': '30',
             'data-preferred-countries': json.dumps(preferred_countries),
             'data-default-code': default_code,
