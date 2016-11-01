@@ -34,15 +34,13 @@ class CountrySelectWidget(forms.TextInput):
     def render(self, name, value, attrs=None):
         if value is None:
             value = ''
+
         final_attrs = self.build_attrs(attrs, name=name, size=2)
         final_attrs['type'] = 'hidden'
         if value != '':
             final_attrs['value'] = force_text(self._format_value(value))
 
-        if final_attrs.get('class'):
-            self.js_attrs['class'] = ' '.join(['country-select-js', final_attrs['class']])
-        else:
-            self.js_attrs['class'] = 'country-select-js'
+        self.js_attrs['class'] = ' '.join(['intl-tel-input', final_attrs.get('class', '')]).strip()
 
         output = [format_html('<input{}>', flatatt(final_attrs))]
         select = self.render_select()
