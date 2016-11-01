@@ -14,13 +14,17 @@ class CountrySelectWidget(forms.TextInput):
         js = ('country_select_js/js/countrySelect.min.js', 'country_select_js/js/init.js')
 
     def __init__(self, attrs=None, preferred_countries=['us', 'gb'], default_code='us', auto_geo_ip=False):
-        final_attrs = {'size': '30'}
+        final_attrs = {'size': '2'}
         if attrs is not None:
             final_attrs.update(attrs)
 
-        final_attrs['data-preferred-countries'] = json.dumps(preferred_countries)
-        final_attrs['data-default-code'] = default_code
-        final_attrs['data-auto-geo-ip'] = auto_geo_ip
+        self.js_attrs = {
+            'class': 'country-select-js',
+            'size': '30',
+            'data-preferred-countries': json.dumps(preferred_countries),
+            'data-default-code': default_code,
+            'data-auto-geo-ip': auto_geo_ip,
+        }
 
         super(CountrySelectWidget, self).__init__(attrs=final_attrs)
 
@@ -36,14 +40,10 @@ class CountrySelectWidget(forms.TextInput):
             final_attrs['value'] = force_text(self._format_value(value))
 
         output = [format_html('<input{}>', flatatt(final_attrs))]
-        select = self.render_select(attrs)
+        select = self.render_select()
         output.append(select)
         return mark_safe('\n'.join(output))
 
     def render_select(self, attrs):
-        final_attrs = {'class': 'country-select-js', 'size': '30'}
-        if attrs is not None:
-            final_attrs.update(attrs)
-
-        output = [format_html('<input{}>', flatatt(final_attrs))]
+        output = format_html('<input{}>', flatatt(self.js_attrs))
         return output
