@@ -31,6 +31,13 @@ class CountrySelectWidget(forms.TextInput):
     def get_options(self):
         return json.dumps(self.options)
 
+    def build_attrs(self, extra_attrs=None, **kwargs):
+        "Helper function for building an attribute dictionary."
+        attrs = dict(self.attrs, **kwargs)
+        if extra_attrs:
+            attrs.update(extra_attrs)
+        return attrs
+
     def render(self, name, value, attrs=None):
         if value is None:
             value = ''
